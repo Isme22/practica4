@@ -1,5 +1,6 @@
+const assert = require('assert');
 const saludo = require('./hola');
 
-test('Debe retornar Hola Mundo', () => {
-    expect(saludo()).toBe('Hola Mundo');
-});
+assert.strictEqual(saludo(), 'Hola Mundo');
+
+console.log('✅ Prueba unitaria aprobada');
