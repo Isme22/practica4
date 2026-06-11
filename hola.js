@@ -1,7 +1,6 @@
-function holaMundo() {
-    return "Hola Mundo";
-}
+const assert = require('assert');
+const saludo = require('./hola');
 
-console.log(holaMundo());
+assert.strictEqual(saludo(), 'Hola Mundo');
 
-module.exports = holaMundo;
+console.log('✅ Prueba unitaria aprobada');
