@@ -18,16 +18,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Instalar dependencias
-        run: npm install
-
-      - name: Ejecutar pruebas unitarias
-        run: npm test
+      - name: Ejecutar prueba unitaria
+        run: node test_app.js
 
       - name: Enviar notificacion a ntfy
         run: |
           curl -H "Title: Push exitoso" \
                -H "Priority: high" \
-               -d "Hola Mundo ejecutado correctamente y pruebas aprobadas." \
-               https://ntfy.sh/devops-itla
+               -d "Hola Mundo ejecutado correctamente y prueba unitaria aprobada." \
                https://ntfy.sh/devops-itla
