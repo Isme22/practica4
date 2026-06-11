@@ -6,13 +6,28 @@ on:
       - main
 
 jobs:
-  enviar-alerta:
+  test-y-alerta:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar pruebas unitarias
+        run: npm test
+
       - name: Enviar notificacion a ntfy
         run: |
-          curl -H "Title: Nuevo Push en GitHub" \
+          curl -H "Title: Push exitoso" \
                -H "Priority: high" \
-               -d "Se realizó un push a la rama main del repositorio." \
+               -d "Hola Mundo ejecutado correctamente y pruebas aprobadas." \
+               https://ntfy.sh/devops-itla
                https://ntfy.sh/devops-itla
